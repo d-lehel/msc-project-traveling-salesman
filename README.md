@@ -2,7 +2,7 @@
 
 This project is an implementation of the Traveling Salesman Problem using various algorithms, including the Nearest Neighbour and 2-opt algorithms. The goal of the project is to find the shortest possible route that a salesman can take to visit a given set of cities and return to the starting point.
 
-![image](https://github.com/d-lehel/msc-project-traveling-salesman/assets/75861915/b7b146f4-ff70-4bdd-a103-1f0da339905c)
+![traveling-salesman](https://github.com/d-lehel/msc-project-traveling-salesman/assets/75861915/a31fdc72-7fc3-4e76-8d29-f64e4a963a7b)
 
 ## Algorithms Used
 - **Nearest Neighbour**: This algorithm starts with an arbitrary city and repeatedly selects the nearest unvisited city until all cities are visited. It provides a quick but suboptimal solution.
