@@ -1,0 +1,23 @@
+branch() függvény hívás mélység 0-val.
+
+branch(mélység):
+    Ha a mélység kisebb, mint 14:
+        Rajzolj egy vonalat felfelé.
+        Mozgasd el a koordinátarendszert felfelé.
+        
+        Véletlenszerűen dönts egy ágról:
+            Ha igaz:
+                Forgasd el az új ágat
+                Vékonyítsd le az ágat.
+                Mentsd el az ág kiiduló koordinátát.
+                Hívd meg újra a branch(mélység + 1) függvényt
+                Állítsd vissza a kiinduló koordinátát.
+                
+                Forgasd vissza a koordinátarendszert balra.
+                Mentse el újra a transzformációs állapotot.
+                Hívd meg újra a branch(mélység + 1) függvényt
+                Állítsd vissza a transzformációs állapotot.
+            Ha nem igaz:
+                Hívd meg újra a branch() függvényt ugyanazzal a mélységgel.
+    
+    Ha a mélység nem kisebb, mint 14, kilépés

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traveling Salesman</title>
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="p5.js"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card mb-3 shadow">
+                    <img src="salesman.jpg" class="card-img" alt="Background Image">
+                </div>
+                <div class="card mb-3">
+                    <div class="card-body shadow">
+                        <div class="mb-3 d-flex flex-column">
+                            <label for="selectOption" class="form-label">Algorithm:</label>
+                            <select id="selectOption" class="form-select">
+                              <option value="nearest">Nearest neighbor</option>
+                              <option value="2opt">2 Opt</option>
+                            </select>
+                          </div>
+                        <div class="mb-3">
+                            <label for="cityNumber" class="form-label">Cities Number:</label>
+                            <input type="number" id="cityNumber" class="form-control" min="1" max="100" value="30">
+                        </div>
+                        <div class="mb-3">
+                            <label for="simulationSpeed" class="form-label">Simulation Speed:</label>
+                            <input type="range" id="simulationSpeed" class="form-range w-100" min="1" max="100" value="0">
+                        </div>
+                        <div class="d-flex flex-column">
+                            <button id="restartButton" class="btn btn-primary">New Route</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-body shadow">
+                        <div id="canvas-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    var selectOption = document.getElementById("selectOption");
+
+    selectOption.addEventListener("change", function() {
+        var algorithm = selectOption.value;
+        saveSelectedOption(algorithm);
+        location.reload();
+    });
+
+    function saveSelectedOption(option) {
+        localStorage.setItem("selectedOption", option);
+    }
+
+    function loadSelectedOption() {
+        var selectedOption = localStorage.getItem("selectedOption");
+        if (selectedOption !== null) {
+            selectOption.value = selectedOption;
+        }
+    }
+
+    function loadScript(algorithm) {
+        var scriptElement = document.createElement("script");
+        if (algorithm === "2opt") {
+            scriptElement.src = "salesman2opt.js";
+        } else {
+            scriptElement.src = "salesmanNearest.js";
+        }
+
+        document.body.appendChild(scriptElement);
+    }
+
+    // Load the selected algorithm or default algorithm (nearest neighbor) on page load
+    document.addEventListener("DOMContentLoaded", function() {
+        loadSelectedOption();
+        var selectedOption = selectOption.value;
+        loadScript(selectedOption);
+    });
+</script>
+
+</body>
+</html>
